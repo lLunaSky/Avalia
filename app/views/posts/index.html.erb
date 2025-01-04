@@ -1,0 +1,20 @@
+<h1>Lista de Posts</h1>
+
+<%= link_to 'Novo Post', new_post_path %> <!-- Link para a página de criar novo post -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Conteúdo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.all.reverse_order.each do |post| %>  <!-- Itera sobre os posts -->
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
