@@ -1,7 +1,36 @@
-<h1>Bem-vindo ao meu projeto Rails!</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Camaar</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+    <div class="login-container">
+        <h1>LOGIN</h1>
+        <%= form_with url: create_login_path, method: :post, class: "login-form", data: { turbo: false } do |form| %>
+        <div class="form-group">
+            <%= form.label :email, "Email" %>
+            <%= form.email_field :email, id: "email", placeholder: "Digite seu email", required: true %>
+        </div>
+        <div class="form-group">
+            <%= form.label :password, "Senha" %>
+            <%= form.password_field :password, id: "senha", placeholder: "Digite sua senha", required: true %>
+        </div>
+        <%= form.submit "Entrar", class: "login-button" %>
+        <% flash.each do |type, message| %>
+            <div class="alert alert-<%= type %>">
+            <%= message %>
+            </div>
+        <% end %>
+        <%= link_to "Criar Conta", new_user_path, class: "signup-link" %>
+        <% end %>
+    </div>
 
-<button id="botaoteste">Clique aqui</button>
-
-<div id="container"></div>
-
-<%= javascript_include_tag 'home', type: 'module' %>
+    <div class="text-container">
+        <p class="welcome-message">Bem vindo<br>ao<br>Camaar</p>
+    </div>
+</body>
+</html>
