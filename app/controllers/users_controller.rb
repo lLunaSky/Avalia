@@ -1,4 +1,7 @@
+# app/controllers/users_controller.rb
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :create] # Permite acesso sem autenticação
+
   def new
     @user = User.new
   end

@@ -1,19 +1,23 @@
 class HomeController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :create_login]
+
   def index
-    # Exibe o formulário de login (index.html.erb)
   end
 
   def create_login
-    # Busca o usuário pelo email
     user = User.find_by(email: params[:email])
 
-    # Verifica se o usuário existe e se a senha está correta
     if user && user.authenticate(params[:password])
-      session[:user_email] = user.email
-      redirect_to root_path, notice: "Login realizado com sucesso!"
+      if user.role.nil?
+        flash.now[:alert] = "O seu cadastro ainda não foi avaliado!"
+        render :index
+      else
+        session[:user_email] = user.email
+        redirect_to root_path, notice: "Login realizado com sucesso!"
+      end
     else
-      flash.now[:alert] = "Email ou senha inválidos."
-      render :index
+      flash[:alert] = "Email ou senha inválidos."
+      redirect_to create_login_path
     end
   end
 
