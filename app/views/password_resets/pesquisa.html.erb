@@ -48,7 +48,7 @@
             <p><strong>Curso:</strong> <%= @user.course %></p>
 
             <%= button_to "Resetar Senha", reset_password_password_reset_path(@user), 
-                        method: :post, class: "btn btn-danger2" %>
+                method: :post, class: "btn btn-danger2" %>
             <% elsif params[:email].present? %>
             <p>Usuário não encontrado com o e-mail informado.</p>
             <% end %>

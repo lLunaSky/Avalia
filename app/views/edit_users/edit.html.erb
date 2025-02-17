@@ -21,17 +21,24 @@
         </nav>
     </header>
     <div class="coluna">
-        <%= form_for(@user, url: edit_user_path(@user), method: :put) do |f| %>
-            <% if @user.errors.any? %>
-                <div class="error_messages">
-                    <h2>Erros encontrados:</h2>
-                    <ul>
-                        <% @user.errors.full_messages.each do |msg| %>
-                            <li><%= msg %></li>
-                        <% end %>
-                    </ul>
-                </div>
-            <% end %>
+        <% if flash[:alert] %>
+            <div class="alert alert-danger">
+                <% flash[:alert].split(", ").each do |error| %>
+                    <div class="error-line"><%= error %></div>
+                <% end %>
+            </div>
+        <% end %>
+
+        <% if current_user %>
+            <h2>Informações do Usuário</h2>
+            <p><strong>E-mail:</strong> <%= current_user.email %></p>
+            <p><strong>Matricula:</strong> <%= current_user.matricula %></p>
+            <p><strong>Nome:</strong> <%= current_user.name %></p>
+            <p><strong>Curso:</strong> <%= current_user.course %></p>
+            <p><strong>função:</strong> <%= current_user.role %></p>
+        <% end %>
+
+        <%= form_for(@user, url: edit_user_path(@user), method: :put, data: { turbo: false }) do |f| %>
 
             <div>
                 <%= f.label :usuario, "Nome de usuário" %>

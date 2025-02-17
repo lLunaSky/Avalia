@@ -7,35 +7,36 @@ class EditUsersController < ApplicationController
     end
 
     def update
-      if @user.update(user_params)
-        redirect_to links_path, notice: 'Usuário atualizado com sucesso.'
-      else
-        flash.now[:alert] = "Senha "
-        render :edit
-      end
+        if @user.update(user_params)
+            redirect_to links_path, notice: 'Usuário atualizado com sucesso.'
+        else
+            flash[:alert] = @user.errors.full_messages.join(", ")
+            flash[:form_params] = user_params.to_h
+            redirect_to edit_edit_user_path(@user)
+        end
     end
     
     def destroy
-      if @user.destroy
-        redirect_to root_path, notice: 'Conta excluída com sucesso.'
-      else
-        redirect_to edit_edit_user_path(current_user), alert: 'Erro ao excluir a conta. Tente novamente.'
-      end
+        if @user.destroy
+            redirect_to root_path, notice: 'Conta excluída com sucesso.'
+        else
+            redirect_to edit_edit_user_path(current_user), alert: 'Erro ao excluir a conta. Tente novamente.'
+        end
     end
     
     private
     
     def set_user
-      @user = User.find(params[:id])
+        @user = User.find(params[:id])
     end
 
     def authorize_user!
-      unless current_user == @user
-        redirect_to links_path, alert: 'Você não tem permissão para editar este perfil.'
-      end
+        unless current_user == @user
+            redirect_to links_path, alert: 'Você não tem permissão para editar este perfil.'
+        end
     end
 
     def user_params
-      params.require(:user).permit(:usuario, :password, :password_confirmation)
+        params.require(:user).permit(:usuario, :password, :password_confirmation)
     end
 end
