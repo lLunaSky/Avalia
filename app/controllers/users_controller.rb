@@ -1,6 +1,5 @@
-# app/controllers/users_controller.rb
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :create] # Permite acesso sem autenticação
+  skip_before_action :authenticate_user!, only: [:new, :create]
 
   def new
     @user = User.new
@@ -11,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to login_path, notice: "Cadastro realizado com sucesso! Faça login."
     else
-      flash.now[:alert] = "Erro ao cadastrar. Verifique os campos."
+      flash.now[:alert] = @user.errors.full_messages.join(", ")
       render :new
     end
   end
@@ -19,6 +18,16 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :role)
+    params.require(:user).permit(
+      :name,
+      :email,
+      :password,
+      :password_confirmation,
+      :role,
+      :course,
+      :matricula,
+      :usuario,
+      :formacao,
+    )
   end
 end

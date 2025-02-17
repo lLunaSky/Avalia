@@ -1,41 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Camaar</title>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
-<body>
-<div class="top">
-<p>Cadastros Pendentes</p>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login - Camaar</title>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <%= link_to "Avalia", root_path %>
+            </div>
+            <p>Cadastros Pendentes</p>
+            <nav class="nav">
+                <% if current_user %>
+                    <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger" %>
+                <% end %>
+            </nav>
+        </header>
 
-<%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger" %>
-</div>
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Email</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @pending_users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td>
-          <%= button_to "Recusar Cadastro", reject_user_path(user), method: :post, data: { confirm: "Tem certeza que deseja recusar este cadastro?" } %>
-          <%= button_to "Aceitar como Discente", approve_user_path(user, role: "discente"), method: :post %>
-          <%= button_to "Aceitar como Docente", approve_user_path(user, role: "docente"), method: :post %>
-          <% if current_user.role == "administrador" %>
-            <%= button_to "Aceitar como Administrador", approve_user_path(user, role: "administrador"), method: :post %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</body>
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Matricula</th>
+                    <th>Email</th>
+                    <th>Curso</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @pending_users.each do |user| %>
+                <tr>
+                    <td><%= user.name %></td>
+                    <td><%= user.matricula %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.course %></td>
+                    <td class="btn-container">
+                        <%= button_to "Recusar Cadastro", reject_user_path(user), method: :post, data: { confirm: "Tem certeza que deseja recusar este cadastro?" }, class: "btn btn-danger2" %>
+                        <%= button_to "Aceitar como Discente", approve_user_path(user, role: "discente"), method: :post, class: "btn btn-success" %>
+                        <%= button_to "Aceitar como Docente", approve_user_path(user, role: "docente"), method: :post, class: "btn btn-success" %>
+                        <% if current_user.role == "administrador" %>
+                            <%= button_to "Aceitar como Administrador", approve_user_path(user, role: "administrador"), method: :post, class: "btn btn-success" %>
+                        <% end %>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+        </tbody>
+        </table>
+    </body>
+</html>

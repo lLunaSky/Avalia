@@ -5,7 +5,8 @@ class HomeController < ApplicationController
   end
 
   def create_login
-    user = User.find_by(email: params[:email])
+    login = params[:email] 
+    user = User.find_by(email: login) || User.find_by(matricula: login)
 
     if user && user.authenticate(params[:password])
       if user.role.nil?
@@ -16,8 +17,8 @@ class HomeController < ApplicationController
         redirect_to root_path, notice: "Login realizado com sucesso!"
       end
     else
-      flash[:alert] = "Email ou senha inválidos."
-      redirect_to create_login_path
+      flash[:alert] = "Login ou senha inválidos."
+      redirect_to login_path
     end
   end
 

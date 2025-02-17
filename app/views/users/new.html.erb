@@ -7,31 +7,60 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
+  <%= form_with model: @user, url: signup_path, method: :post, class: "login_form", data: { turbo: false } do |form| %>
     <div class="login-container">
-        <h1>Cadastro</h1>
-        <%= form_with model: @user, url: signup_path, method: :post, class: "login-form" do |form| %>
-        <div class="form-group">
-            <%= form.label :name, "Nome Completo" %>
-            <%= form.text_field :name, id: "name", placeholder: "Digite seu nome", required: true %>
-        </div>
-        <div class="form-group">
-            <%= form.label :email, "Email" %>
-            <%= form.email_field :email, id: "email", placeholder: "Digite seu email", required: true %>
-        </div>
-        <div class="form-group">
-            <%= form.label :password, "Senha" %>
-            <%= form.password_field :password, id: "password", placeholder: "Digite sua senha", required: true %>
-        </div>
-        <div class="form-group">
-            <%= form.label :password_confirmation, "Confirme sua senha" %>
-            <%= form.password_field :password_confirmation, id: "password_confirmation", placeholder: "Confirme sua senha", required: true %>
-        </div>
-        <%= form.submit "Cadastrar", class: "login-button" %>
-        <% if flash[:alert] %>
-            <div class="alert alert-alert"><%= flash[:alert] %></div>
-        <% end %>
-        <% end %>
-        <p>Já tem uma conta? <a href="<%= login_path %>">Faça login</a></p>
+      <h1>Cadastro</h1>
+
+      <div class="form-group">
+        <%= form.label :name, "Nome Completo" %>
+        <%= form.text_field :name, id: "name", placeholder: "Digite seu nome", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :email, "Email" %>
+        <%= form.email_field :email, id: "email", placeholder: "Digite seu email", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :password, "Senha" %>
+        <%= form.password_field :password, id: "password", placeholder: "Digite sua senha", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :password_confirmation, "Confirme sua senha" %>
+        <%= form.password_field :password_confirmation, id: "password_confirmation", placeholder: "Confirme sua senha", required: true %>
+      </div>
+
+      <p class="voltareg">Já tem uma conta? <a href="<%= login_path %>">Faça login</a></p>
     </div>
+
+    <div class="text-container">
+      <div class="form-group">
+        <%= form.label :course, "Curso" %>
+        <%= form.text_field :course, id: "course", placeholder: "Digite seu curso", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :matricula, "Matrícula" %>
+        <%= form.text_field :matricula, id: "matricula", placeholder: "Digite sua matrícula", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :usuario, "Usuário" %>
+        <%= form.text_field :usuario, id: "usuario", placeholder: "Digite seu usuário", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :formacao, "Formação" %>
+        <%= form.select :formacao, options_for_select(["Graduando", "Graduado", "Pós-graduação", "Mestrado", "Doutorado"]), { prompt: "Selecione sua formação" }, { required: true } %>
+      </div>
+
+      <%= form.submit "Cadastrar", class: "login-button" %>
+
+      <% if flash[:alert] %>
+        <div class="alert alert-alert"><%= flash[:alert] %></div>
+      <% end %>
+    </div>
+  <% end %>
 </body>
 </html>
