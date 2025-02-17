@@ -1,66 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login - Camaar</title>
-        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    </head>
-    <body>
-        <header class="header">
-            <div class="logo">
-                <%= link_to "Camaar", links_path %>
-            </div>
-            <p>Editar Usuário</p>
-            <nav class="nav">
-                <%= button_to "Voltar", links_path, method: :get, class: "btn btn-success" %>
-                <% if current_user %>
-                    <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger2" %>
-                <% end %>
-            </nav>
-        </header>
-        <div class="coluna">
-        
-            <% flash.each do |type, message| %>
-                <div class="alert alert-<%= type %>">
-                    <%= message %>
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuário - Camaar</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <%= link_to "Camaar", links_path %>
+        </div>
+        <p>Editar Usuário</p>
+        <nav class="nav">
+            <%= button_to "Voltar", links_path, method: :get, class: "btn btn-success" %>
+            <% if current_user %>
+                <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger2" %>
             <% end %>
-
-            <%= form_for(@user, url: edit_user_path(@user), method: :put) do |f| %>
-                <% if @user.errors.any? %>
-                    <div class="error_messages">
+        </nav>
+    </header>
+    <div class="coluna">
+        <%= form_for(@user, url: edit_user_path(@user), method: :put) do |f| %>
+            <% if @user.errors.any? %>
+                <div class="error_messages">
+                    <h2>Erros encontrados:</h2>
                     <ul>
                         <% @user.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
+                            <li><%= msg %></li>
                         <% end %>
                     </ul>
-                    </div>
-                <% end %>
-
-                <div>
-                    <%= f.label :usuario, "Nome de usuário" %>
-                    <%= f.text_field :usuario %>
                 </div>
-
-                <div>
-                    <%= f.label :password, "Nova senha (deixe em branco para não alterar)" %>
-                    <%= f.password_field :password %>
-                </div>
-
-                <div>
-                    <%= f.label :password_confirmation, "Confirmar nova senha" %>
-                    <%= f.password_field :password_confirmation %>
-                </div>
-
-                <div>
-                    <%= f.submit "Salvar alterações", class: "btn btn-success"%>
-                </div>
-
             <% end %>
-            
-            <%= button_to "Excluir Conta", edit_user_path(@user), method: :delete, data: { confirm: "Tem certeza que deseja excluir sua conta? Essa ação não pode ser desfeita." }, class: "btn btn-danger3" %>
-        </div>
-    </body>
+
+            <div>
+                <%= f.label :usuario, "Nome de usuário" %>
+                <%= f.text_field :usuario %>
+            </div>
+
+            <div>
+                <%= f.label :password, "Nova senha (deixe em branco para não alterar)" %>
+                <%= f.password_field :password %>
+            </div>
+
+            <div>
+                <%= f.label :password_confirmation, "Confirmar nova senha" %>
+                <%= f.password_field :password_confirmation %>
+            </div>
+
+            <div>
+                <%= f.submit "Salvar alterações", class: "btn btn-success" %>
+            </div>
+        <% end %>
+
+        <%= button_to "Excluir Conta", edit_user_path(@user), method: :delete, data: { confirm: "Tem certeza que deseja excluir sua conta? Essa ação não pode ser desfeita." }, class: "btn btn-danger3" %>
+    </div>
+</body>
 </html>

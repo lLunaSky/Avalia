@@ -2,17 +2,17 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: { case_sensitive: false }, on: :create
-  validates :email, presence: true, on: :update
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password, confirmation: true, allow_blank: true
-  validates :password_confirmation, presence: true, if: :password_changed?
+  validates :email, presence: true, uniqueness: {case_sensitive: false}
+  
+  validates :password, length: {minimum: 6, message: "deve ter pelo menos 6 caracteres"}, allow_blank: true
+  validates :password, confirmation: {message: "e a confirmação de senha não coincidem"}, allow_blank: true
+  validates :password_confirmation, presence:  {message: "é obrigatório quando a senha for preenchida"}, if: -> { password.present?}
 
-  validates :role, inclusion: { in: ["discente", "docente", "administrador", nil] }
+  validates :role, inclusion: {in: ["discente", "docente", "administrador", nil]}
   validates :course, presence: true, on: :create 
-  validates :matricula, presence: true, uniqueness: true, format: { with: /\A\d+\z/ }, on: :create 
+  validates :matricula, presence: true, uniqueness: true, format: { with: /\A\d+\z/}, on: :create 
   validates :usuario, presence: true
-  validates :formacao, inclusion: { in: ["Graduando", "Graduado", "Pós-graduação", "Mestrado", "Doutorado"], allow_blank: true }
+  validates :formacao, inclusion: {in: ["Graduando", "Graduado", "Pós-graduação", "Mestrado", "Doutorado"], allow_blank: true}
 
   def password_changed?
     password.present?

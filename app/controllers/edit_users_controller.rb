@@ -10,7 +10,7 @@ class EditUsersController < ApplicationController
       if @user.update(user_params)
         redirect_to links_path, notice: 'Usuário atualizado com sucesso.'
       else
-        flash.now[:alert] = @user.errors.full_messages.join(", ")
+        flash.now[:alert] = "Senha "
         render :edit
       end
     end

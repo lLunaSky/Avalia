@@ -386,3 +386,22 @@ input[type="password"]:focus {
 .btn-danger3:hover {
     background-color: #c82333;
 }
+
+.error_messages {
+    background-color: #f8d7da; /* Fundo vermelho claro */
+    color: #721c24; /* Texto vermelho escuro */
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border: 1px solid #f5c6cb;
+}
+  
+.error_messages h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+  
+.error_messages ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
