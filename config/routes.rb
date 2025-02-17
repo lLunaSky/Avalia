@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   # Rotas de avaliações
   get "/avaliacoes", to: "avaliacoes#index"
-  
+  get "/avaliacoes/:id", to: "avaliacoes#show", as: "avaliacao"
+  post "/avaliacoes/:id/submit", to: "avaliacoes#submit", as: "submit_avaliacao"
+
   # Rotas de autenticação
   get "/login", to: "home#index"
   get "/create_login", to: "home#index"
@@ -20,3 +22,4 @@ Rails.application.routes.draw do
   post 'approve_user/:id', to: 'approvals#approve_user', as: 'approve_user'
   post 'reject_user/:id', to: 'approvals#reject_user', as: 'reject_user'
 end
+
