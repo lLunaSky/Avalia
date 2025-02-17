@@ -1,4 +1,7 @@
 source "https://rubygems.org"
+gem 'saikuro'
+
+
 gem 'rails-i18n', '~> 8.0.0.alpha1'
 
 gem 'bcrypt', '~> 3.1.7'
