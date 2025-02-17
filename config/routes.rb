@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get "avaliacoes/index"
   root "home#index"
 
+  # Rotas de avaliações
+  get "/avaliacoes", to: "avaliacoes#index"
+  
   # Rotas de autenticação
   get "/login", to: "home#index"
   get "/create_login", to: "home#index"
