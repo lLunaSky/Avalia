@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login - Camaar</title>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+    <body>
+      <header class="header">
+        <div class="logo">
+          <%= link_to "Camaar", links_path %>
+        </div>
+        <p>Bem-vinde, <%= current_user.usuario %>!</p>
+        <nav class="nav">
+          <% if current_user %>
+            <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger" %>
+          <% end %>
+        </nav>
+      </header>
+
+      <div class="coluna2">
+        <% flash.each do |type, message| %>
+          <div class="alert alert-<%= type %>">
+            <%= message %>
+          </div>
+        <% end %>
+      
+        <p>Escolha uma das opções abaixo:</p>
+
+        <ul>
+          <% if current_user.role == "docente" || current_user.role == "administrador"%>
+            <li><%= link_to "Pesquisar Usuário para Resetar Senha", password_resets_path %></li>
+            <li><%= link_to "Gerenciar Aprovações", pending_approvals_path %></li>
+          <% end %>
+          <li><%= link_to "Editar Meu Perfil", edit_edit_user_path(current_user) %></li>
+        </ul>
+      </div>
+    </body>
+</html>

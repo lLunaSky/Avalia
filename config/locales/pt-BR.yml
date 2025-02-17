@@ -4,6 +4,12 @@ pt-BR:
       messages:
         record_invalid: "A validação falhou: %{errors}"
         taken: "já está em uso"
+        invalid: "formato inválido"
+      models:
+        user:
+          attributes:
+            matricula:
+              invalid: "deve conter apenas números"
   errors:
     messages:
       blank: "não pode ficar em branco"

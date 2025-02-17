@@ -2,17 +2,23 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: true
-  validates :password, presence: true, length: { minimum: 6 }, on: :create
+  validates :email, presence: true, uniqueness: { case_sensitive: false }, on: :create
+  validates :email, presence: true, on: :update
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, confirmation: true, allow_blank: true
+  validates :password_confirmation, presence: true, if: :password_changed?
+
   validates :role, inclusion: { in: ["discente", "docente", "administrador", nil] }
-  
-  validates :course, presence: true
-  validates :matricula, presence: true, uniqueness: true
+  validates :course, presence: true, on: :create 
+  validates :matricula, presence: true, uniqueness: true, format: { with: /\A\d+\z/ }, on: :create 
   validates :usuario, presence: true
   validates :formacao, inclusion: { in: ["Graduando", "Graduado", "Pós-graduação", "Mestrado", "Doutorado"], allow_blank: true }
-  
+
+  def password_changed?
+    password.present?
+  end
+
   def update_role(new_role)
-    self.role = new_role
-    save(validate: false)
+    update(role: new_role)
   end
 end

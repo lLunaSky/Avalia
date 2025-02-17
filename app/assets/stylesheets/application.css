@@ -90,6 +90,7 @@ input[type="email"] {
     border-radius: 4px;
     font-size: 1rem;
     color: #333;
+    margin-bottom: 1rem;
 }
 
 input[type="text"]:focus,
@@ -172,6 +173,7 @@ input[type="password"]:focus {
 }
   
 .nav a {
+    display: flex;
     color: white;
     text-decoration: none;
     margin-left: 15px;
@@ -274,4 +276,113 @@ input[type="password"]:focus {
 
 .btn-container {
     display: flex;
+}
+
+.cadmenssage {
+    font-size: 1rem;
+    color: black;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+  
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.nav form {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.coluna {
+    color: black;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 70%;
+    max-height: 600px;
+    width: 50%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.coluna2 {
+    color: black;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 50%;
+    max-height: 500px;
+    width: 50%;
+    max-width: 500px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.coluna p {
+    margin-bottom: 1rem;
+}
+
+.coluna h2 {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #28a745;
+    margin-right: 0.5rem;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+}
+
+.marginb {
+    margin-top: 1rem;
+}
+
+.btn-danger3 {
+    display: inline-block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #dc3545;
+    margin-right: 0.5rem;
+    margin-top: 2rem;
+}
+
+.btn-danger3:hover {
+    background-color: #c82333;
 }

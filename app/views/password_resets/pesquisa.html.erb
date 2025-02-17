@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login - Camaar</title>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <%= link_to "Camaar", links_path %>
+            </div>
+            <p>Gestão de Usuário</p>
+            <nav class="nav">
+                <%= button_to "Voltar", links_path, method: :get, class: "btn btn-success" %>
+                <% if current_user %>
+                    <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger2" %>
+                <% end %>
+            </nav>
+        </header>
+        <div class="coluna">
+            <% if notice %>
+            <div class="alert alert-success">
+                <%= notice %>
+            </div>
+            <% end %>
+            <% if alert %>
+            <div class="alert alert-danger">
+                <%= alert %>
+            </div>
+            <% end %>
+
+            <%= form_tag password_resets_path, method: :get do %>
+                <div class="form-group">
+                    <%= label_tag :email, "Digite o e-mail ou matrícula do usuário" %>
+                    <%= text_field_tag :email, params[:email], class: 'form-control' %>
+                </div>
+                <%= submit_tag "Pesquisar", class: 'btn btn-primary'%>
+            <% end %>
+
+            <% if @user %>
+            <h2>Informações do Usuário</h2>
+            <p><strong>E-mail:</strong> <%= @user.email %></p>
+            <p><strong>Matricula:</strong> <%= @user.matricula %></p>
+            <p><strong>Nome:</strong> <%= @user.name %></p>
+            <p><strong>Curso:</strong> <%= @user.course %></p>
+
+            <%= button_to "Resetar Senha", reset_password_password_reset_path(@user), 
+                        method: :post, class: "btn btn-danger2" %>
+            <% elsif params[:email].present? %>
+            <p>Usuário não encontrado com o e-mail informado.</p>
+            <% end %>
+        </div>
+    </body>
+</html>
