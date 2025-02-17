@@ -1,17 +1,7 @@
 <div class="container">
-  <!-- Botão de menu -->
   <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <%= render "shared/sidebar" %>
 
-  <!-- Menu lateral -->
-  <nav id="sidebar" class="sidebar">
-    <div class="menu-header">Avaliações</div>
-    <ul>
-      <li><a href="#">Estatísticas</a></li>
-      <li><a href="#">Importação</a></li>
-    </ul>
-  </nav>
-
-  <!-- Conteúdo principal -->
   <main class="main-content">
     <div class="header">
       <div class="logo">
@@ -28,15 +18,16 @@
       </div>
     </div>
 
-    <!-- Cards de turmas -->
+    <!-- Cards de Avaliações -->
     <div class="cards-container">
       <% @avaliacoes.each do |avaliacao| %>
-        <div class="card">
-          <strong><%= avaliacao["name"] %></strong> <br>
-          <span>Semestre: <%= avaliacao["class"]["semester"] %></span> <br>
-          <span>Código: <%= avaliacao["code"] %></span> <br>
-          <span>Horário: <%= avaliacao["class"]["time"] %></span>
-        </div>
+        <a href="<%= avaliacao_path(avaliacao["code"]) %>" class="card-link">
+          <div class="card">
+            <strong><%= avaliacao["name"] %></strong> <br>
+            <span>Semestre: <%= avaliacao["class"]["semester"] %></span> <br>
+            <span>Código: <%= avaliacao["code"] %></span> <br>
+          </div>
+        </a>
       <% end %>
     </div>
   </main>
