@@ -1,0 +1,46 @@
+<div class="container">
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <%= render "shared/sidebar" %>
+
+  <main class="main-content">
+    <div class="header">
+      <div class="logo">
+        <a href="#">Avaliação - <%= @avaliacao[:name] %> - <%= @avaliacao[:class][:semester] %></a>
+      </div>
+      <div class="nav">
+        <div class="user-menu">
+          <button class="user-button">U</button>
+          <div class="dropdown-content">
+            <a href="#">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulário de Avaliação -->
+    <form action="<%= submit_avaliacao_path(@avaliacao[:code]) %>" method="post">
+      <div class="form-container">
+        <% @perguntas.each do |pergunta| %>
+          <div class="question-card">
+            <label><%= pergunta[:texto] %></label>
+
+            <% if pergunta[:tipo] == "texto" %>
+              <input type="text" name="respostas[<%= pergunta[:id] %>]" placeholder="Digite sua resposta">
+            <% else %>
+              <div class="options">
+                <% ["Muito bom", "Bom", "Satisfatório", "Ruim", "Péssimo"].each do |opcao| %>
+                  <label>
+                    <input type="radio" name="respostas[<%= pergunta[:id] %>]" value="<%= opcao %>">
+                    <%= opcao %>
+                  </label>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <button type="submit" class="submit-btn">Enviar</button>
+    </form>
+  </main>
+</div>
