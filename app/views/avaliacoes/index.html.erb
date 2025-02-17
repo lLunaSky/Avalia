@@ -1,0 +1,43 @@
+<div class="container">
+  <!-- Botão de menu -->
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+  <!-- Menu lateral -->
+  <nav id="sidebar" class="sidebar">
+    <div class="menu-header">Avaliações</div>
+    <ul>
+      <li><a href="#">Estatísticas</a></li>
+      <li><a href="#">Importação</a></li>
+    </ul>
+  </nav>
+
+  <!-- Conteúdo principal -->
+  <main class="main-content">
+    <div class="header">
+      <div class="logo">
+        <a href="#">Avaliações</a>
+      </div>
+      <div class="nav">
+        <input type="text" placeholder="🔍 Buscar">
+        <div class="user-menu">
+          <button class="user-button">U</button>
+          <div class="dropdown-content">
+            <a href="#">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards de turmas -->
+    <div class="cards-container">
+      <% @avaliacoes.each do |avaliacao| %>
+        <div class="card">
+          <strong><%= avaliacao["name"] %></strong> <br>
+          <span>Semestre: <%= avaliacao["class"]["semester"] %></span> <br>
+          <span>Código: <%= avaliacao["code"] %></span> <br>
+          <span>Horário: <%= avaliacao["class"]["time"] %></span>
+        </div>
+      <% end %>
+    </div>
+  </main>
+</div>
