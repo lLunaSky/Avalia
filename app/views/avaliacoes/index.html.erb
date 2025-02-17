@@ -1,0 +1,34 @@
+<div class="container">
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <%= render "shared/sidebar" %>
+
+  <main class="main-content">
+    <div class="header">
+      <div class="logo">
+        <a href="#">Avaliações</a>
+      </div>
+      <div class="nav">
+        <input type="text" placeholder="🔍 Buscar">
+        <div class="user-menu">
+          <button class="user-button">U</button>
+          <div class="dropdown-content">
+            <a href="#">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards de Avaliações -->
+    <div class="cards-container">
+      <% @avaliacoes.each do |avaliacao| %>
+        <a href="<%= avaliacao_path(avaliacao["code"]) %>" class="card-link">
+          <div class="card">
+            <strong><%= avaliacao["name"] %></strong> <br>
+            <span>Semestre: <%= avaliacao["class"]["semester"] %></span> <br>
+            <span>Código: <%= avaliacao["code"] %></span> <br>
+          </div>
+        </a>
+      <% end %>
+    </div>
+  </main>
+</div>

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   root "home#index"
+  # Rotas de avaliações
+  get "avaliacoes/index"
+  get "/avaliacoes", to: "avaliacoes#index"
+  get "/avaliacoes/:id", to: "avaliacoes#show", as: "avaliacao"
+  post "/avaliacoes/:id/submit", to: "avaliacoes#submit", as: "submit_avaliacao"
 
   # Rota para a página links
   get "/links", to: "home#links", as: "links"
@@ -27,3 +32,4 @@ Rails.application.routes.draw do
     end
   end
 end
+

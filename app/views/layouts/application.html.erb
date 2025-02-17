@@ -19,10 +19,16 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+
+    <%# Inclui o CSS da tela de avaliações apenas quando necessário %>
+    <% if controller_name == "avaliacoes" %>
+      <%= stylesheet_link_tag "inicio", "data-turbo-track": "reload" %>
+    <% end %>
+
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+  <%= yield %>
   </body>
 </html>
