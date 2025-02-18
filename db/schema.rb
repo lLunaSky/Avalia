@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2025_02_18_003953) do
-  create_table "avaliacaos", force: :cascade do |t|
+  create_table "avaliacoes", force: :cascade do |t|
     t.string "nome"
     t.string "semestre"
     t.string "codigo"
