@@ -150,7 +150,7 @@ input[type="password"]:focus {
 
 /*======================================================================================================================*/
 
-.header {
+.header1 {
     position: fixed;
     top: 0;
     left: 0;
@@ -165,14 +165,14 @@ input[type="password"]:focus {
     z-index: 1000;
 }
   
-.logo a {
+.logo1 a {
     color: white;
     text-decoration: none;
     font-size: 1.5em;
     font-weight: bold;
 }
   
-.nav a {
+.nav1 a {
     display: flex;
     color: white;
     text-decoration: none;
@@ -180,7 +180,7 @@ input[type="password"]:focus {
     font-size: 1em;
 }
   
-.nav a:hover {
+.nav1 a:hover {
     text-decoration: underline;
 }
 
@@ -272,10 +272,6 @@ input[type="password"]:focus {
 
 .btn-success:hover {
     background-color: #218838;
-}
-
-.btn-container {
-    display: flex;
 }
 
 .cadmenssage {

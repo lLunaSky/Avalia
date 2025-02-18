@@ -8,12 +8,12 @@
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
     <body>
-      <header class="header">
-        <div class="logo">
+      <header class="header1">
+        <div class="logo1">
           <%= link_to "Camaar", links_path %>
         </div>
         <p>Bem-vinde, <%= current_user.usuario %>!</p>
-        <nav class="nav">
+        <nav class="nav1">
           <% if current_user %>
             <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger" %>
           <% end %>
