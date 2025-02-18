@@ -1,0 +1,95 @@
+/* BOTÃO DO MENU - POSICIONADO ACIMA DA HEADER */
+.menu-toggle {
+    position: fixed;
+    top: 10px; /* Distância do topo */
+    left: 10px; /* Distância da lateral */
+    background: #6C2365;
+    color: white;
+    border: none;
+    font-size: 1.8em;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001; /* Garante que fique acima da header preta */
+}
+
+/* Ajuste no logo/título */
+.logo {
+    flex-grow: 1; /* Faz o logo ocupar mais espaço */
+    text-align: left; /* Alinha à esquerda */
+    padding-left: 40px; /* Move o texto mais para a direita */
+}
+
+.logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+/* Quando o menu está aberto */
+.sidebar.open {
+    left: 0;
+}
+
+.main-content.shift {
+    margin-left: 250px;
+}
+
+/* MENU LATERAL - Sidebar ajustada abaixo da header */
+.sidebar {
+    width: 250px; /* Largura fixa */
+    height: calc(100vh - 50px); /* Ocupa toda a tela menos a altura da header */
+    background-color: #6C2365;
+    color: white;
+    position: fixed;
+    top: 50px; /* Começa logo abaixo da header */
+    left: -250px; /* Começa escondida */
+    transition: left 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+}
+
+/* Quando o menu está aberto */
+.sidebar.open {
+    left: 0;
+}
+
+/* Ajuste para os itens do menu */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    flex-grow: 1; /* Faz a lista expandir */
+}
+
+.sidebar ul li {
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    display: block;
+}
+
+.sidebar ul li:hover {
+    background: #50204D;
+}
+
+/* HEADER */
+.header {
+    height: 70px; /* Define a altura fixa */
+    display: flex;
+    align-items: center;
+    background-color: #222;
+    color: white;
+    padding: 10px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
