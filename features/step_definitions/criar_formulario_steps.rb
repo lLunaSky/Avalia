@@ -43,4 +43,4 @@ Then("o formulário de avaliação de docente é criado com sucesso") do
   expect(Formulario.last.tipo).to eq('docente')
 end
 
-Then("o formulário de avaliação de discente é cri
+Then("o formulário de avaliação de discente é crido")
