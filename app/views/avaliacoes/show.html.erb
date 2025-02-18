@@ -7,6 +7,10 @@
       <div class="logo">
         <a href="#">Avaliação - <%= @avaliacao["name"] %> - <%= @avaliacao["class"]["semester"] %></a>
       </div>
+      <%= button_to "Voltar", avaliacoes_path, method: :get, class: "btn btn-success" %>
+      <% if current_user %>
+        <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger2" %>
+      <% end %>
     </div>
 
     <!-- Formulário de Avaliação -->

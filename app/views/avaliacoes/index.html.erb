@@ -19,6 +19,10 @@
           </div>
         </div>
       </div>
+      <%= button_to "Voltar", links_path, method: :get, class: "btn btn-success" %>
+      <% if current_user %>
+        <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger2" %>
+      <% end %>
     </div>
 
     <!-- Cards de Avaliações -->
