@@ -1,5 +1,8 @@
 <div class="container">
+  <!-- Botão para abrir o menu -->
   <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+  <!-- Renderiza o menu lateral apenas nesta página -->
   <%= render "shared/sidebar" %>
 
   <main class="main-content">
@@ -32,3 +35,6 @@
     </div>
   </main>
 </div>
+
+<!-- Importa o script do menu -->
+<%= javascript_include_tag "menu" %>
