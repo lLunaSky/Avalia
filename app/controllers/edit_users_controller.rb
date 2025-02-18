@@ -5,16 +5,6 @@ class EditUsersController < ApplicationController
   
     def edit
     end
-
-    def update
-        if @user.update(user_params)
-            redirect_to links_path, notice: 'Usuário atualizado com sucesso.'
-        else
-            flash[:alert] = @user.errors.full_messages.join(", ")
-            flash[:form_params] = user_params.to_h
-            redirect_to edit_edit_user_path(@user)
-        end
-    end
     
     def destroy
         if @user.destroy
@@ -24,7 +14,29 @@ class EditUsersController < ApplicationController
         end
     end
     
+    def update
+        if @user.update(user_params)
+            handle_successful_update
+        else
+            handle_failed_update
+        end
+    end
+      
     private
+    
+    def handle_successful_update
+        redirect_to links_path, notice: 'Usuário atualizado com sucesso.'
+    end
+    
+    def handle_failed_update
+        set_error_flash
+        redirect_to edit_edit_user_path(@user), alert: flash[:alert]
+    end
+    
+    def set_error_flash
+        flash[:alert] = @user.errors.full_messages.join(", ")
+        flash[:form_params] = user_params.to_h
+    end
     
     def set_user
         @user = User.find(params[:id])

@@ -6,20 +6,12 @@ class HomeController < ApplicationController
   end
 
   def create_login
-    login = params[:email]
-    user = User.find_by(email: login) || User.find_by(matricula: login)
-
-    if user && user.authenticate(params[:password])
-      if user.role.nil?
-        flash.now[:alert] = "O seu cadastro ainda não foi avaliado!"
-        render :index
-      else
-        session[:user_email] = user.email
-        redirect_to links_path, notice: "Login realizado com sucesso!"
-      end
+    user = find_user_by_login_param(login_param)
+    
+    if authenticated_user?(user)
+      handle_authentication_result(user)
     else
-      flash[:alert] = "Login ou senha inválidos."
-      redirect_to login_path
+      handle_failed_authentication
     end
   end
 
@@ -32,6 +24,45 @@ class HomeController < ApplicationController
   end
 
   private
+
+  def login_param
+    params[:email]
+  end
+
+  def password_param
+    params[:password]
+  end
+
+  def find_user_by_login_param(login)
+    User.find_by(email: login) || User.find_by(matricula: login)
+  end
+
+  def authenticated_user?(user)
+    user&.authenticate(password_param)
+  end
+
+  def handle_authentication_result(user)
+    if user.role.nil?
+      handle_pending_approval
+    else
+      handle_successful_login(user)
+    end
+  end
+
+  def handle_successful_login(user)
+    session[:user_email] = user.email
+    redirect_to links_path, notice: "Login realizado com sucesso!"
+  end
+
+  def handle_pending_approval
+    flash.now[:alert] = "O seu cadastro ainda não foi avaliado!"
+    render :index
+  end
+
+  def handle_failed_authentication
+    flash[:alert] = "Login ou senha inválidos."
+    redirect_to login_path
+  end
 
   def current_user
     @current_user ||= User.find_by(email: session[:user_email]) if session[:user_email].present?

@@ -7,16 +7,33 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    
     if @user.save
-      session[:user_email] = nil
-      redirect_to login_path, notice: "Cadastro realizado com sucesso! Faça login."
+      handle_successful_signup
     else
-      flash.now[:alert] = @user.errors.full_messages.join(", ")
-      render :new
+      handle_failed_signup
     end
   end
 
   private
+
+  def handle_successful_signup
+    clear_session_email
+    redirect_to login_path, notice: "Cadastro realizado com sucesso! Faça login."
+  end
+
+  def handle_failed_signup
+    set_flash_errors
+    render :new
+  end
+
+  def clear_session_email
+    session[:user_email] = nil
+  end
+
+  def set_flash_errors
+    flash.now[:alert] = @user.errors.full_messages.join(", ")
+  end
 
   def user_params
     params.require(:user).permit(
@@ -28,7 +45,7 @@ class UsersController < ApplicationController
       :course,
       :matricula,
       :usuario,
-      :formacao,
+      :formacao
     )
   end
 end
