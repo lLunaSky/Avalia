@@ -1,10 +1,10 @@
 class CreateRespostas < ActiveRecord::Migration[8.0]
   def change
-    create_table :respostas do |t|  # <-- Corrigido para plural
+    create_table :respostas do |t|
       t.references :avaliacao, null: false, foreign_key: true
-      t.string :pergunta
-      t.string :resposta
-      t.string :usuario
+      t.string :pergunta, null: false
+      t.string :resposta, null: false
+      t.string :usuario, null: false
 
       t.timestamps
     end
