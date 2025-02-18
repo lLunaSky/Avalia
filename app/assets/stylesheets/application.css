@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-  
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
@@ -13,7 +13,7 @@ body {
     height: 100vh;
     padding-top: 60px;
 }
-  
+
 .login_form {
     display: flex;
     justify-content: center;
@@ -39,7 +39,7 @@ body {
     flex-direction: column;
     justify-content: center;
 }
-  
+
 .text-container {
     color: white;
     background-color: #6C2365;
@@ -62,19 +62,19 @@ h1 {
     color: #333;
     margin-bottom: 1rem;
 }
-  
+
 .welcome-message {
     font-size: 3rem;
     color: white;
     margin-bottom: 1rem;
     font-weight: bold;
 }
-  
+
 .form-group {
     margin-bottom: 1.5rem;
     text-align: left;
 }
-  
+
 label {
     display: block;
     font-size: 0.9rem;
@@ -90,7 +90,6 @@ input[type="email"] {
     border-radius: 4px;
     font-size: 1rem;
     color: #333;
-    margin-bottom: 1rem;
 }
 
 input[type="text"]:focus,
@@ -111,7 +110,7 @@ input[type="password"]:focus {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-  
+
 .login-button:hover {
     background-color: #45a049;
 }
@@ -122,13 +121,13 @@ input[type="password"]:focus {
     border: 1px solid transparent;
     border-radius: 4px;
 }
-  
+
 .alert-notice {
     color: #3c763d;
     background-color: #dff0d8;
     border-color: #d6e9c6;
 }
-  
+
 .alert-alert {
     color: #a94442;
     background-color: #f2dede;
@@ -164,22 +163,21 @@ input[type="password"]:focus {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
-  
+
 .logo a {
     color: white;
     text-decoration: none;
     font-size: 1.5em;
     font-weight: bold;
 }
-  
+
 .nav a {
-    display: flex;
     color: white;
     text-decoration: none;
     margin-left: 15px;
     font-size: 1em;
 }
-  
+
 .nav a:hover {
     text-decoration: underline;
 }
@@ -196,7 +194,7 @@ input[type="password"]:focus {
     background-color: #dc3545;
     color: white;
 }
-  
+
 .btn-danger:hover {
     background-color: #c82333;
 }
@@ -276,132 +274,4 @@ input[type="password"]:focus {
 
 .btn-container {
     display: flex;
-}
-
-.cadmenssage {
-    font-size: 1rem;
-    color: black;
-    margin-bottom: 1rem;
-    font-weight: bold;
-}
-
-.alert-success {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 10px;
-    border-radius: 4px;
-    margin: 10px 0;
-}
-  
-.alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 15px;
-    border-radius: 4px;
-    margin: 10px 0;
-    text-align: left;
-}
-
-.nav form {
-    display: inline-block;
-    margin-left: 10px;
-}
-
-.coluna {
-    color: black;
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    height: 70%;
-    max-height: 600px;
-    width: 50%;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-
-.coluna2 {
-    color: black;
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    height: 50%;
-    max-height: 500px;
-    width: 50%;
-    max-width: 500px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.coluna p {
-    margin-bottom: 1rem;
-}
-
-.coluna h2 {
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-}
-
-.btn-primary {
-    width: 100%;
-    padding: 0.5rem 1rem;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    background-color: #28a745;
-    margin-right: 0.5rem;
-}
-
-.btn-primary:hover {
-    background-color: #218838;
-}
-
-.marginb {
-    margin-top: 1rem;
-}
-
-.btn-danger3 {
-    display: inline-block;
-    width: 100%;
-    padding: 0.5rem 1rem;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    background-color: #dc3545;
-    margin-right: 0.5rem;
-    margin-top: 2rem;
-}
-
-.btn-danger3:hover {
-    background-color: #c82333;
-}
-
-.button-group {
-    margin-top: 2rem;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-  
-.btn-warning {
-    background-color: #ffc107;
-    color: #000;
-    border: 1px solid #ffc107;
-}
-
-.btn-warning:hover {
-    background-color: #e0a800;
-    border-color: #e0a800;
 }
