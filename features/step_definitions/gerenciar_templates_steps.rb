@@ -38,4 +38,5 @@ When("eu tento deletar o template chamado {string}") do |nome_template|
 end
 
 Then("o template deve ser atualizado com o novo nome") do
-  expect
+  expect(@template.reload.nome).to eq("Novo Nome")
+end

@@ -440,6 +440,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.0.1)
   rails-i18n (~> 8.0.0.alpha1)
+  rdoc
   rubocop-rails-omakase
   rubycritic
   selenium-webdriver

@@ -1,9 +1,10 @@
 source "https://rubygems.org"
 
+gem 'rdoc'
+
 gem 'rubycritic', group: :development
 
 gem 'flog'
-
 
 gem 'rails-i18n', '~> 8.0.0.alpha1'
 
