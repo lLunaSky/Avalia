@@ -21,12 +21,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_18_003953) do
 
   create_table "respostas", force: :cascade do |t|
     t.integer "avaliacao_id", null: false
-    t.string "pergunta"
-    t.string "resposta"
-    t.string "usuario"
+    t.string "pergunta", null: false
+    t.string "resposta", null: false
+    t.string "usuario", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["avaliacao_id"], name: "index_resposta_on_avaliacao_id"
+    t.index ["avaliacao_id"], name: "index_respostas_on_avaliacao_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -42,5 +42,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_18_003953) do
     t.string "formacao"
   end
 
-  add_foreign_key "respostas", "avaliacoes", column: "avaliacao_id"
+  add_foreign_key "respostas", "avaliacaos"
 end
