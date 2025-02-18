@@ -19,7 +19,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_18_003953) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "resposta", force: :cascade do |t|
+  create_table "respostas", force: :cascade do |t|
     t.integer "avaliacao_id", null: false
     t.string "pergunta"
     t.string "resposta"
@@ -42,5 +42,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_18_003953) do
     t.string "formacao"
   end
 
-  add_foreign_key "resposta", "avaliacaos"
+  add_foreign_key "respostas", "avaliacoes", column: "avaliacao_id"
 end
